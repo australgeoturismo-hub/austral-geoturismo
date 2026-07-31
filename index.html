@@ -6,6 +6,7 @@
 <title>Austral Geoturismo — Asesoramiento y salidas guiadas por la Patagonia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
 <style>
 :root{
   --bg: #012734;
@@ -53,9 +54,11 @@ nav a:hover{border-color:var(--sage);}
 .hero{
   position:relative;overflow:hidden;
   padding:96px 0 80px;
-  background:radial-gradient(ellipse at 75% -10%, rgba(159,199,194,0.12) 0%, rgba(159,199,194,0) 55%),
-             radial-gradient(ellipse at 0% 110%, rgba(198,65,60,0.10) 0%, rgba(198,65,60,0) 55%),
-             var(--bg);
+  background:linear-gradient(180deg, rgba(1,39,52,0.55) 0%, rgba(1,39,52,0.75) 55%, var(--bg) 100%),
+             radial-gradient(ellipse at 75% -10%, rgba(159,199,194,0.10) 0%, rgba(159,199,194,0) 55%),
+             url(assets/caviahue/hero_bg.jpg);
+  background-size:cover;
+  background-position:center 65%;
 }
 .hero svg.contours{position:absolute;inset:0;width:100%;height:100%;opacity:0.35;z-index:0;}
 .hero-inner{position:relative;z-index:1;}
@@ -118,6 +121,33 @@ nav a:hover{border-color:var(--sage);}
 .daytrip h3{font-size:20px;}
 .daytrip p{color:var(--sage-dim);font-size:14.5px;margin-top:4px;max-width:520px;}
 
+
+/* gallery */
+.gallery{padding:24px 0 90px;}
+.gallery-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;margin-top:44px;height:520px;}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:4px;filter:saturate(1.05);}
+.gallery-grid .g1{grid-row:1 / 3;}
+@media (max-width:760px){
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px);height:auto;}
+  .gallery-grid .g1{grid-row:1 / 2;grid-column:1 / 3;}
+}
+.gallery-caption{margin-top:16px;color:var(--sage-dim);font-size:14px;font-style:italic;}
+
+.gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;height:220px;}
+.gallery-strip img{width:100%;height:100%;object-fit:cover;border-radius:4px;}
+@media (max-width:760px){.gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px;height:auto;} .gallery-strip img:nth-child(3){grid-column:1/3;}}
+
+
+/* advisory + tables */
+.advise-block{margin-top:36px;background:linear-gradient(135deg, var(--bg-soft), var(--circle));border:1px solid var(--hairline);border-radius:4px;padding:32px;}
+.advise-block h3{margin-bottom:10px;}
+.advise-block p{color:var(--sage);font-size:15.5px;max-width:560px;margin-bottom:20px;}
+.dates-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px;}
+.dates-table th{text-align:left;color:var(--red);font-family:'Playfair Display',serif;font-weight:500;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 14px;border-bottom:1px solid var(--hairline);}
+.dates-table td{padding:12px 14px;border-bottom:1px dotted var(--hairline);color:var(--cream);}
+.dates-table tr td:first-child{color:var(--sage);font-style:italic;}
+.fauna{padding:70px 0;border-top:1px dotted var(--hairline);}
+
 /* footer */
 footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;}
 .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;}
@@ -138,9 +168,11 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
       <div class="brand-word">AUSTRAL<span>Geoturismo</span></div>
     </a>
     <nav>
-      <a href="#salidas">Salidas</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#contacto" class="nav-cta">Contacto</a>
+      <a href="#salidas" data-en="Tours">Salidas</a>
+      <a href="#fauna" data-en="Wildlife">Fauna</a>
+      <a href="#nosotros" data-en="About">Nosotros</a>
+      <a href="#contacto" class="nav-cta" data-en="Contact">Contacto</a>
+      <button id="lang-toggle" aria-label="Cambiar idioma" style="background:transparent;border:1px solid var(--hairline);color:var(--cream);border-radius:100px;padding:6px 14px;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'EB Garamond',serif;">EN</button>
     </nav>
   </div>
 </header>
@@ -155,12 +187,12 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
     </g>
   </svg>
   <div class="wrap hero-inner">
-    <div class="eyebrow">Patagonia · turismo geológico</div>
-    <h1>Asesoramiento y salidas guiadas por la Patagonia</h1>
-    <p class="subtitle">Salidas de un día y expediciones largas para leer el paisaje volcánico, glaciario y marino de la Patagonia, guiadas por un Doctor en Geología.</p>
+    <div class="eyebrow" data-en="Patagonia · geological tourism">Patagonia · turismo geológico</div>
+    <h1 data-en="Travel advice and guided tours across Patagonia">Asesoramiento y salidas guiadas por la Patagonia</h1>
+    <p class="subtitle" data-en="Day trips and long expeditions to read Patagonia's volcanic, glacial and marine landscape, guided by a Doctor in Geology.">Salidas de un día y expediciones largas para leer el paisaje volcánico, glaciario y marino de la Patagonia, guiadas por un Doctor en Geología.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="#salidas">Ver las salidas</a>
-      <a class="btn btn-ghost" href="#contacto">Consultar disponibilidad</a>
+      <a class="btn btn-primary" href="#salidas" data-en="See the tours">Ver las salidas</a>
+      <a class="btn btn-ghost" href="#contacto" data-en="Check availability">Consultar disponibilidad</a>
     </div>
   </div>
 </section>
@@ -168,12 +200,12 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
 <section class="intro">
   <div class="wrap intro-grid">
     <div>
-      <h2>Leer el paisaje, no solo mirarlo</h2>
-      <p>Cada salida combina la interpretación científica del territorio con la experiencia de estar en él: volcanes activos, glaciares, fauna marina y fósiles explicados por quien los estudia, no por quien los memorizó.</p>
+      <h2 data-en="Read the landscape, not just look at it">Leer el paisaje, no solo mirarlo</h2>
+      <p data-en="Each tour combines scientific interpretation of the territory with the experience of being in it: active volcanoes, glaciers, marine wildlife and fossils explained by someone who studies them, not just memorized them.">Cada salida combina la interpretación científica del territorio con la experiencia de estar en él: volcanes activos, glaciares, fauna marina y fósiles explicados por quien los estudia, no por quien los memorizó.</p>
     </div>
     <div>
-      <h2>Cortas y largas, según lo que busques</h2>
-      <p>Desde una caminata de medio día hasta expediciones de una semana. Grupos reducidos, siempre con guía personalizado, y la posibilidad de sumar alojamiento si preferís no organizarlo por tu cuenta.</p>
+      <h2 data-en="Short or long, whatever you're after">Cortas y largas, según lo que busques</h2>
+      <p data-en="From a half-day walk to week-long expeditions. Small groups, always with a personal guide, and the option to add lodging if you'd rather not organize it yourself.">Desde una caminata de medio día hasta expediciones de una semana. Grupos reducidos, siempre con guía personalizado, y la posibilidad de sumar alojamiento si preferís no organizarlo por tu cuenta.</p>
     </div>
   </div>
 </section>
@@ -181,54 +213,54 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
 <section class="catalog" id="salidas">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-title">Catálogo 2026 / 2027</div>
-      <h2>Las salidas</h2>
-      <p class="lead">Cuatro experiencias, de la más científica a la más panorámica.</p>
+      <div class="section-title" data-en="2026 / 2027 CATALOG">Catálogo 2026 / 2027</div>
+      <h2 data-en="The tours">Las salidas</h2>
+      <p class="lead" data-en="Four experiences, from the most scientific to the most panoramic.">Cuatro experiencias, de la más científica a la más panorámica.</p>
     </div>
 
     <div class="card-grid">
 
       <div class="card featured">
-        <span class="tag">Turismo científico</span>
+        <span class="tag" data-en="Scientific tourism">Turismo científico</span>
         <h3>Copahue Sessions</h3>
-        <div class="meta">6 días · hasta 8 personas · ene–mar</div>
-        <p>Expedición científica guiada por un Dr. en Geología en el volcán activo más accesible de Argentina. Muestreo en la caldera, géiseres, azufre nativo y una pieza de música electrónica generada con los sonidos del volcán.</p>
+        <div class="meta" data-en="6 days · up to 8 people · Jan–Mar">6 días · hasta 8 personas · ene–mar</div>
+        <p data-en="A scientific expedition guided by a Dr. in Geology at Argentina's most accessible active volcano. Sampling at the caldera, geysers, native sulfur, and an electronic music track generated from the volcano's sounds.">Expedición científica guiada por un Dr. en Geología en el volcán activo más accesible de Argentina. Muestreo en la caldera, géiseres, azufre nativo y una pieza de música electrónica generada con los sonidos del volcán.</p>
         <div class="card-footer">
-          <span class="price">Todo incluido</span>
-          <span class="arrow">Consultar →</span>
+          <span class="price" data-en="All-inclusive">Todo incluido</span>
+          <span class="arrow" data-en="Ask us →">Consultar →</span>
         </div>
       </div>
 
       <div class="card">
-        <span class="tag">Turismo geológico</span>
-        <h3>Caviahue — La Islandia de Sudamérica</h3>
-        <div class="meta">5 días / 4 noches · grupos reducidos</div>
-        <p>Trekking junto al volcán Copahue, termas de origen volcánico y un valle que se lee como un libro de geología abierto: vulcanismo activo, fumarolas y geomorfología glaciaria.</p>
+        <span class="tag" data-en="Geological tourism">Turismo geológico</span>
+        <h3 data-en="Caviahue — The Iceland of South America">Caviahue — La Islandia de Sudamérica</h3>
+        <div class="meta" data-en="5 days / 4 nights · small groups">5 días / 4 noches · grupos reducidos</div>
+        <p data-en="Trekking beside the Copahue volcano, volcanic hot springs, and a valley that reads like an open book of geology: active volcanism, fumaroles and glacial geomorphology.">Trekking junto al volcán Copahue, termas de origen volcánico y un valle que se lee como un libro de geología abierto: vulcanismo activo, fumarolas y geomorfología glaciaria.</p>
         <div class="card-footer">
-          <span class="price">Económica / Premium</span>
-          <span class="arrow">Consultar →</span>
+          <span class="price" data-en="Budget / Premium">Económica / Premium</span>
+          <span class="arrow" data-en="Ask us →">Consultar →</span>
         </div>
       </div>
 
       <div class="card">
-        <span class="tag">Circuito de volcanes</span>
+        <span class="tag" data-en="Volcano circuit">Circuito de volcanes</span>
         <h3>Volcanes Neuquinos</h3>
-        <div class="meta">9 días · apto todo público</div>
-        <p>Batea Mahuida y las dos caras del volcán Lanín, entre araucarias, lavas y morenas glaciarias. Pinturas rupestres, geomorfología del río Aluminé y cierre opcional en los 7 Lagos.</p>
+        <div class="meta" data-en="9 days · suitable for everyone">9 días · apto todo público</div>
+        <p data-en="Batea Mahuida and both faces of the Lanín volcano, among araucaria forests, lava flows and glacial moraines. Rock art, the geomorphology of the Aluminé river, and an optional close at the 7 Lakes.">Batea Mahuida y las dos caras del volcán Lanín, entre araucarias, lavas y morenas glaciarias. Pinturas rupestres, geomorfología del río Aluminé y cierre opcional en los 7 Lagos.</p>
         <div class="card-footer">
-          <span class="price">Económica / Premium</span>
-          <span class="arrow">Consultar →</span>
+          <span class="price" data-en="Budget / Premium">Económica / Premium</span>
+          <span class="arrow" data-en="Ask us →">Consultar →</span>
         </div>
       </div>
 
       <div class="card">
-        <span class="tag">Fauna y geología marina</span>
-        <h3>Península Valdés</h3>
-        <div class="meta">4 días · grupos de 4 a 5 personas</div>
-        <p>Ballenas en Puerto Pirámides, pingüinos y elefantes marinos en Caleta Valdés y Punta Tombo, fósiles marinos, el Museo Egidio Feruglio y el desembarco galés en Gaiman.</p>
+        <span class="tag" data-en="Marine wildlife and geology">Fauna y geología marina</span>
+        <h3 data-en="Ancient seas, living giants">Mares antiguos, gigantes vivos</h3>
+        <div class="meta">Península Valdés · 4 días · grupos de 4 a 5</div>
+        <p data-en="Whales at Puerto Pirámides, penguins and elephant seals at Caleta Valdés and Punta Tombo, marine fossils, the Egidio Feruglio Museum and the Welsh landing story in Gaiman." >Ballenas en Puerto Pirámides, pingüinos y elefantes marinos en Caleta Valdés y Punta Tombo, fósiles marinos, el Museo Egidio Feruglio y el desembarco galés en Gaiman.</p>
         <div class="card-footer">
-          <span class="price">3 versiones de alojamiento</span>
-          <span class="arrow">Consultar →</span>
+          <span class="price" data-en="3 lodging options">3 versiones de alojamiento</span>
+          <span class="arrow" data-en="Ask us →">Consultar →</span>
         </div>
       </div>
 
@@ -237,20 +269,153 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
     <div class="daytrip">
       <div>
         <span class="tag">Salida del día</span>
-        <h3>Cerro Avanzado + Punta Ninfas</h3>
-        <p>Medio día para diferenciar playas de arena y de grava, con una caminata corta y opción de cierre en una cervecería artesanal. Ideal si no hacés la salida larga completa.</p>
+        <h3 data-en="The ancient seas of Madryn">Los mares antiguos de Madryn</h3>
+        <div class="meta">Cerro Avanzado + Punta Ninfas</div>
+        <p data-en="Half a day to tell apart sand and gravel beaches, with a short walk and an optional stop at a craft brewery. Ideal if you can't do the full long trip.">Medio día para diferenciar playas de arena y de grava, con una caminata corta y opción de cierre en una cervecería artesanal. Ideal si no hacés la salida larga completa.</p>
       </div>
-      <a class="btn btn-ghost" href="#contacto">Consultar →</a>
+      <a class="btn btn-ghost" href="#contacto" data-en="Ask us →">Consultar →</a>
+    </div>
+
+    <div class="advise-block">
+      <div class="section-title" data-en="ADVISORY">ASESORÍA</div>
+      <h3 data-en="Already know where you want to go, but need help planning it?" style="font-size:22px;max-width:520px;">¿Ya sabés a dónde ir pero necesitás ayuda armando el viaje?</h3>
+      <p data-en="One-on-one travel advice for Patagonia: itineraries, logistics and recommendations, without necessarily joining a group departure.">Asesoramiento personalizado para armar tu viaje por Patagonia: itinerarios, logística y recomendaciones, sin necesidad de sumarte a una salida grupal.</p>
+      <a class="btn btn-primary" href="https://wa.me/5491150518784?text=Hola%2C%20quiero%20consultar%20por%20asesor%C3%ADa%20de%20viaje" target="_blank" data-en="Ask about advisory →">Consultar asesoría →</a>
+    </div>
+
+    <div class="section-head">
+      <div class="section-title" data-en="SCHEDULE">CALENDARIO</div>
+      <h2 data-en="Upcoming departures">Próximas salidas</h2>
+    </div>
+    <div style="overflow-x:auto;margin-top:20px;">
+    <table class="dates-table">
+      <thead>
+        <tr>
+          <th data-en="Trip">Salida</th>
+          <th>Dic</th><th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-en="Caviahue — Ancient Seas of South America">Caviahue — La Islandia de Sudamérica</td>
+          <td data-en="2nd & 4th week">2da y 4ta sem.</td>
+          <td data-en="2nd & 4th week">2da y 4ta sem.</td>
+          <td data-en="2nd & 4th week">2da y 4ta sem.</td>
+          <td data-en="Ask us">Consultar</td>
+          <td data-en="Ask us">Consultar</td>
+        </tr>
+        <tr>
+          <td>Volcanes Neuquinos</td>
+          <td data-en="1st week">1ra sem.</td>
+          <td data-en="1st & 3rd week">1ra y 3ra sem.</td>
+          <td data-en="1st & 3rd week">1ra y 3ra sem.</td>
+          <td data-en="Ask us">Consultar</td>
+          <td data-en="Ask us">Consultar</td>
+        </tr>
+        <tr>
+          <td>Copahue Sessions</td>
+          <td>—</td>
+          <td data-en="Season">Temporada</td>
+          <td data-en="Season">Temporada</td>
+          <td data-en="Season">Temporada</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td data-en="Ancient Seas, Living Giants (Valdés)">Mares antiguos, gigantes vivos</td>
+          <td data-en="Ask us — every month">Consultar — todos los meses</td>
+          <td data-en="Ask us — every month">Consultar — todos los meses</td>
+          <td data-en="Ask us — every month">Consultar — todos los meses</td>
+          <td data-en="Ask us — every month">Consultar — todos los meses</td>
+          <td data-en="Ask us — every month">Consultar — todos los meses</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
 
   </div>
 </section>
 
+<section class="fauna" id="fauna">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-title" data-en="VALDÉS WILDLIFE">FAUNA EN VALDÉS</div>
+      <h2 data-en="When to see each species">Calendario de fauna</h2>
+      <p class="lead" data-en="Approximate seasons based on official and local tourism sources.">Temporadas aproximadas, según fuentes oficiales y de turismo de la zona.</p>
+    </div>
+    <div style="overflow-x:auto;margin-top:24px;">
+    <table class="dates-table">
+      <thead>
+        <tr><th data-en="Species">Especie</th><th data-en="Season">Temporada</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-en="Southern right whale">Ballena franca austral</td><td data-en="June – December (peak Sep–Nov)">Junio – diciembre (pico set–nov)</td></tr>
+        <tr><td data-en="Magellanic penguins">Pingüinos magallánicos</td><td data-en="September – April">Septiembre – abril</td></tr>
+        <tr><td data-en="Elephant seals">Elefantes marinos</td><td data-en="Year-round (peak Sep–Dec, pups Jan–Feb)">Todo el año (pico set–dic, crías ene–feb)</td></tr>
+        <tr><td data-en="South American sea lions">Lobos marinos de un pelo</td><td data-en="Year-round (pups born in January)">Todo el año (crías en enero)</td></tr>
+        <tr><td data-en="Orcas">Orcas</td><td data-en="Feb–Apr and Sep–Nov (Punta Norte)">Feb–abr y set–nov (Punta Norte)</td></tr>
+        <tr><td data-en="Dusky dolphins">Delfín oscuro</td><td data-en="November – March">Noviembre – marzo</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-title">Caviahue en imágenes</div>
+    <h2 style="font-size:28px;">Volcán, agua y araucarias</h2>
+    <div class="gallery-grid">
+      <img class="g1" src="assets/caviahue/waterfall.jpg" alt="Cascada en la zona de Caviahue-Copahue, aguas turquesas cayendo sobre roca volcánica">
+      <img src="assets/caviahue/crater.jpg" alt="Cráter del volcán Copahue con fumarolas activas">
+      <img src="assets/caviahue/hikers.jpg" alt="Grupo caminando por el terreno volcánico del Copahue">
+      <img src="assets/caviahue/forest.jpg" alt="Bosque de araucarias junto al lago Caviahue" style="grid-column:2/4;">
+    </div>
+    <p class="gallery-caption">Cascada del Agrio, el cráter activo, la caminata y el bosque de araucarias — todo en la misma salida.</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-title">Volcanes Neuquinos en imágenes</div>
+    <h2 style="font-size:28px;">El Lanín, sus lagos y el paso entre araucarias</h2>
+    <div class="gallery-grid">
+      <img class="g1" src="assets/volcanes/lanin_cone.jpg" alt="Volcán Lanín visto desde una playa de troncos, cono nevado perfecto">
+      <img src="assets/volcanes/trekking.jpg" alt="Trekking sobre nieve rumbo al volcán Lanín">
+      <img src="assets/volcanes/lake_reflection.jpg" alt="Lago patagónico reflejando montañas nevadas">
+      <img src="assets/volcanes/seven_lagos.jpg" alt="Panorámica de lagos y montañas nevadas en la zona de los 7 Lagos" style="grid-column:2/4;">
+    </div>
+    <p class="gallery-caption">El cono del Lanín, la caminata sobre nieve y los espejos de agua de la ruta de los 7 Lagos.</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-title">Península Valdés en imágenes</div>
+    <h2 style="font-size:28px;">Ballenas, pingüinos y acantilados</h2>
+    <div class="gallery-grid">
+      <img class="g1" src="assets/valdes/coast_cliffs.jpg" alt="Playa turquesa y acantilados de Península Valdés">
+      <img src="assets/valdes/penguin_close.jpg" alt="Pingüino de Magallanes junto a arbustos en flor">
+      <img src="assets/valdes/sea_lions.jpg" alt="Colonia de lobos marinos en la costa">
+      <img src="assets/valdes/aerial_coast.jpg" alt="Vista aérea de los acantilados de Península Valdés" style="grid-column:2/4;">
+    </div>
+    <p class="gallery-caption">Los acantilados turquesa, la pingüinera de Punta Tombo y las colonias de lobos marinos, todo en la misma salida.</p>
+    <div class="gallery-strip">
+      <img src="assets/valdes/lagoon_beach.jpg" alt="Playa de conchillas y laguna en Península Valdés">
+      <img src="assets/valdes/cove_sign.jpg" alt="Cala y acantilados blancos con cartel de peligro de derrumbe">
+      <img src="assets/valdes/cliff_edge.jpg" alt="Acantilado sobre el mar en Península Valdés">
+    </div>
+  </div>
+</section>
+
 <section id="nosotros" style="padding:70px 0;border-top:1px dotted var(--hairline);">
-  <div class="wrap" style="max-width:680px;">
-    <div class="section-title">Quién guía</div>
-    <h2 style="font-size:28px;">Doctor en Geología, en el territorio</h2>
-    <p style="margin-top:16px;color:var(--sage);font-size:17px;">No es un guía que aprendió geología de memoria: cada parada tiene nombre, historia y datos reales, de quien investiga estos paisajes.</p>
+  <div class="wrap" style="display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;max-width:780px;">
+    <img src="assets/caviahue/guide.jpg" alt="Guía de Austral Geoturismo frente al volcán Copahue" style="width:200px;height:200px;object-fit:cover;border-radius:50%;border:1px solid var(--hairline);">
+    <div>
+      <div class="section-title" data-en="THE GUIDE">Quién guía</div>
+      <h2 style="font-size:28px;" data-en="Juan Manuel — Dr. in Geology (UBA)">Juan Manuel — Dr. en Geología (UBA)</h2>
+      <p style="margin-top:16px;color:var(--sage);font-size:17px;" data-en="Researcher and lecturer. My work and research in Patagonia let me travel every corner of it. My passion for teaching and sharing knowledge led me to want to show the true face of these landscapes." >Investigador y docente. Trabajo e investigo en Patagonia, eso me permitió recorrer todos sus rincones. Y mi pasión por la enseñanza y divulgar conocimiento me llevaron a querer mostrar la cara verdadera de los paisajes.</p>
+      <p style="margin-top:10px;color:var(--cream);font-size:18px;font-style:italic;font-family:'Playfair Display',serif;" data-en="Will you join the adventure?">¿Te sumás a la aventura?</p>
+    </div>
   </div>
 </section>
 
@@ -263,25 +428,52 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <h4>Contacto</h4>
-          <a href="https://linktr.ee/australgeoturismo">linktr.ee/australgeoturismo</a>
-          <a href="#">WhatsApp</a>
+          <h4 data-en="Book / consult">Reservar / consultar</h4>
+          <a href="https://forms.gle/n3bUs743ehYPjFP49" target="_blank" data-en="Booking form →">Formulario de reserva →</a>
+          <a href="mailto:australgeoturismo@gmail.com">australgeoturismo@gmail.com</a>
         </div>
         <div class="footer-col">
-          <h4>Salidas</h4>
+          <h4 data-en="Tours">Salidas</h4>
           <a href="#salidas">Copahue Sessions</a>
           <a href="#salidas">Caviahue</a>
           <a href="#salidas">Volcanes Neuquinos</a>
           <a href="#salidas">Península Valdés</a>
         </div>
+        <div class="footer-col">
+          <h4 data-en="Follow us">Seguinos</h4>
+          <div style="display:flex;gap:14px;margin-top:4px;">
+            <a href="https://wa.me/5491150518784" target="_blank" aria-label="WhatsApp" style="font-size:20px;"><i class="ti ti-brand-whatsapp"></i></a>
+            <a href="https://instagram.com/austral.geoturismo" target="_blank" aria-label="Instagram" style="font-size:20px;"><i class="ti ti-brand-instagram"></i></a>
+            <a href="https://tiktok.com/@austral.geoturism" target="_blank" aria-label="TikTok" style="font-size:20px;"><i class="ti ti-brand-tiktok"></i></a>
+            <a href="https://linktr.ee/australgeoturismo" target="_blank" aria-label="Linktree" style="font-size:20px;"><i class="ti ti-link"></i></a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Austral Geoturismo</span>
-      <span>Asesoramiento y salidas guiadas por la Patagonia</span>
+      <span data-en="Travel advice and guided tours across Patagonia">Asesoramiento y salidas guiadas por la Patagonia</span>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('[data-en]');
+  els.forEach(function(el){ el.dataset.es = el.textContent; });
+  var btn = document.getElementById('lang-toggle');
+  var lang = localStorage.getItem('austral-lang') || 'es';
+  function apply(l){
+    els.forEach(function(el){ el.textContent = l === 'en' ? el.dataset.en : el.dataset.es; });
+    document.documentElement.lang = l;
+    btn.textContent = l === 'en' ? 'ES' : 'EN';
+    localStorage.setItem('austral-lang', l);
+    lang = l;
+  }
+  btn.addEventListener('click', function(){ apply(lang === 'en' ? 'es' : 'en'); });
+  apply(lang);
+})();
+</script>
 
 </body>
 </html>
