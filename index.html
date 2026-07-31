@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Austral Geoturismo — Asesoramiento y salidas guiadas por la Patagonia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #012734;
+  --bg-soft: #063845;
+  --circle: #013B48;
+  --badge: #2E7175;
+  --sage: #9FC7C2;
+  --sage-dim: #6FA19C;
+  --cream: #F4F1EA;
+  --red: #C6413C;
+  --hairline: rgba(244,241,234,0.22);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'EB Garamond',serif;
+  line-height:1.6;
+}
+h1,h2,h3,.brand-word{font-family:'Playfair Display',serif;font-weight:800;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+/* header */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(1,39,52,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--hairline);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 1px rgba(244,241,234,0.25);}
+.brand-word{font-size:14px;letter-spacing:2px;line-height:1.2;}
+.brand-word span{display:block;font-family:'EB Garamond',serif;font-weight:400;letter-spacing:4px;font-size:9px;color:var(--sage);margin-top:2px;text-transform:uppercase;}
+nav{display:flex;gap:28px;font-size:14px;letter-spacing:0.5px;}
+nav a{color:var(--sage);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
+nav a:hover{border-color:var(--sage);}
+.nav-cta{background:var(--red);color:var(--cream);padding:8px 16px;border-radius:100px;font-size:13px;letter-spacing:0.5px;}
+.nav-cta:hover{background:#a8362f;}
+@media (max-width:720px){ nav{display:none;} }
+
+/* hero */
+.hero{
+  position:relative;overflow:hidden;
+  padding:96px 0 80px;
+  background:radial-gradient(ellipse at 75% -10%, rgba(159,199,194,0.12) 0%, rgba(159,199,194,0) 55%),
+             radial-gradient(ellipse at 0% 110%, rgba(198,65,60,0.10) 0%, rgba(198,65,60,0) 55%),
+             var(--bg);
+}
+.hero svg.contours{position:absolute;inset:0;width:100%;height:100%;opacity:0.35;z-index:0;}
+.hero-inner{position:relative;z-index:1;}
+.eyebrow{font-family:'EB Garamond',serif;letter-spacing:5px;font-size:12px;color:var(--red);text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:clamp(38px,6vw,64px);line-height:1.05;max-width:760px;}
+.hero .subtitle{margin-top:20px;font-style:italic;font-size:21px;color:var(--sage);max-width:520px;font-weight:400;}
+.hero-ctas{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:13px 26px;border-radius:100px;font-size:14px;letter-spacing:0.5px;}
+.btn-primary{background:var(--red);color:var(--cream);}
+.btn-primary:hover{background:#a8362f;}
+.btn-ghost{border:1px solid var(--hairline);color:var(--cream);}
+.btn-ghost:hover{border-color:var(--sage);color:var(--sage);}
+
+/* intro */
+.intro{padding:70px 0;border-top:1px dotted var(--hairline);border-bottom:1px dotted var(--hairline);}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.intro h2{font-size:28px;margin-bottom:18px;}
+.intro p{color:var(--sage);font-size:17px;}
+@media (max-width:760px){.intro-grid{grid-template-columns:1fr;gap:28px;}}
+
+/* section title */
+.section-title{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.section-head{padding-top:80px;}
+.section-head h2{font-size:32px;max-width:600px;}
+.section-head p.lead{margin-top:14px;color:var(--sage);font-style:italic;font-size:18px;max-width:560px;}
+
+/* catalog cards */
+.catalog{padding:32px 0 90px;}
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px;}
+@media (max-width:760px){.card-grid{grid-template-columns:1fr;}}
+.card{
+  background:var(--bg-soft);
+  border:1px solid var(--hairline);
+  border-radius:4px;
+  padding:32px;
+  position:relative;
+  transition:border-color .2s, transform .2s;
+}
+.card:hover{border-color:var(--sage-dim);transform:translateY(-2px);}
+.card .tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);border:1px solid var(--hairline);padding:5px 12px;border-radius:100px;margin-bottom:18px;}
+.card h3{font-size:24px;margin-bottom:10px;line-height:1.15;}
+.card .meta{color:var(--sage-dim);font-size:14px;margin-bottom:14px;letter-spacing:0.3px;}
+.card p{font-size:15.5px;color:var(--cream);opacity:0.88;}
+.card .card-footer{margin-top:22px;display:flex;align-items:center;justify-content:space-between;border-top:1px dotted var(--hairline);padding-top:16px;}
+.card .price{font-size:13px;color:var(--sage);letter-spacing:0.3px;}
+.card .arrow{color:var(--red);font-size:14px;}
+.card.featured{border-color:var(--red);}
+.card.featured .tag{border-color:var(--red);color:#e8a89f;}
+
+/* day trip strip */
+.daytrip{
+  margin-top:36px;
+  background:var(--circle);
+  border:1px solid var(--hairline);
+  border-radius:4px;
+  padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.daytrip .tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);border:1px solid var(--hairline);padding:5px 12px;border-radius:100px;margin-bottom:10px;}
+.daytrip h3{font-size:20px;}
+.daytrip p{color:var(--sage-dim);font-size:14.5px;margin-top:4px;max-width:520px;}
+
+/* footer */
+footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;}
+.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;}
+.footer-brand{display:flex;align-items:center;gap:12px;}
+.footer-brand img{width:38px;height:38px;border-radius:50%;}
+.footer-links{display:flex;gap:40px;flex-wrap:wrap;}
+.footer-col h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px;font-family:'EB Garamond',serif;font-weight:500;}
+.footer-col a{display:block;color:var(--sage);font-size:14.5px;margin-bottom:8px;}
+.footer-bottom{margin-top:48px;padding-top:20px;border-top:1px dotted var(--hairline);font-size:12.5px;color:var(--sage-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="Austral Geoturismo">
+      <div class="brand-word">AUSTRAL<span>Geoturismo</span></div>
+    </a>
+    <nav>
+      <a href="#salidas">Salidas</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <svg class="contours" viewBox="0 0 1120 520" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#9FC7C2" stroke-width="1">
+      <ellipse cx="900" cy="80" rx="420" ry="260"/>
+      <ellipse cx="900" cy="80" rx="340" ry="210"/>
+      <ellipse cx="900" cy="80" rx="260" ry="160"/>
+      <ellipse cx="900" cy="80" rx="180" ry="112"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Patagonia · turismo geológico</div>
+    <h1>Asesoramiento y salidas guiadas por la Patagonia</h1>
+    <p class="subtitle">Salidas de un día y expediciones largas para leer el paisaje volcánico, glaciario y marino de la Patagonia, guiadas por un Doctor en Geología.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#salidas">Ver las salidas</a>
+      <a class="btn btn-ghost" href="#contacto">Consultar disponibilidad</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div>
+      <h2>Leer el paisaje, no solo mirarlo</h2>
+      <p>Cada salida combina la interpretación científica del territorio con la experiencia de estar en él: volcanes activos, glaciares, fauna marina y fósiles explicados por quien los estudia, no por quien los memorizó.</p>
+    </div>
+    <div>
+      <h2>Cortas y largas, según lo que busques</h2>
+      <p>Desde una caminata de medio día hasta expediciones de una semana. Grupos reducidos, siempre con guía personalizado, y la posibilidad de sumar alojamiento si preferís no organizarlo por tu cuenta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="catalog" id="salidas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-title">Catálogo 2026 / 2027</div>
+      <h2>Las salidas</h2>
+      <p class="lead">Cuatro experiencias, de la más científica a la más panorámica.</p>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card featured">
+        <span class="tag">Turismo científico</span>
+        <h3>Copahue Sessions</h3>
+        <div class="meta">6 días · hasta 8 personas · ene–mar</div>
+        <p>Expedición científica guiada por un Dr. en Geología en el volcán activo más accesible de Argentina. Muestreo en la caldera, géiseres, azufre nativo y una pieza de música electrónica generada con los sonidos del volcán.</p>
+        <div class="card-footer">
+          <span class="price">Todo incluido</span>
+          <span class="arrow">Consultar →</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Turismo geológico</span>
+        <h3>Caviahue — La Islandia de Sudamérica</h3>
+        <div class="meta">5 días / 4 noches · grupos reducidos</div>
+        <p>Trekking junto al volcán Copahue, termas de origen volcánico y un valle que se lee como un libro de geología abierto: vulcanismo activo, fumarolas y geomorfología glaciaria.</p>
+        <div class="card-footer">
+          <span class="price">Económica / Premium</span>
+          <span class="arrow">Consultar →</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Circuito de volcanes</span>
+        <h3>Volcanes Neuquinos</h3>
+        <div class="meta">9 días · apto todo público</div>
+        <p>Batea Mahuida y las dos caras del volcán Lanín, entre araucarias, lavas y morenas glaciarias. Pinturas rupestres, geomorfología del río Aluminé y cierre opcional en los 7 Lagos.</p>
+        <div class="card-footer">
+          <span class="price">Económica / Premium</span>
+          <span class="arrow">Consultar →</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Fauna y geología marina</span>
+        <h3>Península Valdés</h3>
+        <div class="meta">4 días · grupos de 4 a 5 personas</div>
+        <p>Ballenas en Puerto Pirámides, pingüinos y elefantes marinos en Caleta Valdés y Punta Tombo, fósiles marinos, el Museo Egidio Feruglio y el desembarco galés en Gaiman.</p>
+        <div class="card-footer">
+          <span class="price">3 versiones de alojamiento</span>
+          <span class="arrow">Consultar →</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="daytrip">
+      <div>
+        <span class="tag">Salida del día</span>
+        <h3>Cerro Avanzado + Punta Ninfas</h3>
+        <p>Medio día para diferenciar playas de arena y de grava, con una caminata corta y opción de cierre en una cervecería artesanal. Ideal si no hacés la salida larga completa.</p>
+      </div>
+      <a class="btn btn-ghost" href="#contacto">Consultar →</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="nosotros" style="padding:70px 0;border-top:1px dotted var(--hairline);">
+  <div class="wrap" style="max-width:680px;">
+    <div class="section-title">Quién guía</div>
+    <h2 style="font-size:28px;">Doctor en Geología, en el territorio</h2>
+    <p style="margin-top:16px;color:var(--sage);font-size:17px;">No es un guía que aprendió geología de memoria: cada parada tiene nombre, historia y datos reales, de quien investiga estos paisajes.</p>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Austral Geoturismo">
+        <div class="brand-word">AUSTRAL<span>Geoturismo</span></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://linktr.ee/australgeoturismo">linktr.ee/australgeoturismo</a>
+          <a href="#">WhatsApp</a>
+        </div>
+        <div class="footer-col">
+          <h4>Salidas</h4>
+          <a href="#salidas">Copahue Sessions</a>
+          <a href="#salidas">Caviahue</a>
+          <a href="#salidas">Volcanes Neuquinos</a>
+          <a href="#salidas">Península Valdés</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Austral Geoturismo</span>
+      <span>Asesoramiento y salidas guiadas por la Patagonia</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
