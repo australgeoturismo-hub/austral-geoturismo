@@ -6,165 +6,15 @@
 <title>Austral Geoturismo — Asesoramiento y salidas guiadas por la Patagonia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
-<style>
-:root{
-  --bg: #012734;
-  --bg-soft: #063845;
-  --circle: #013B48;
-  --badge: #2E7175;
-  --sage: #9FC7C2;
-  --sage-dim: #6FA19C;
-  --cream: #F4F1EA;
-  --red: #C6413C;
-  --hairline: rgba(244,241,234,0.22);
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-  background:var(--bg);
-  color:var(--cream);
-  font-family:'EB Garamond',serif;
-  line-height:1.6;
-}
-h1,h2,h3,.brand-word{font-family:'Playfair Display',serif;font-weight:800;}
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;display:block;}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
-
-/* header */
-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(1,39,52,0.92);
-  backdrop-filter:blur(6px);
-  border-bottom:1px solid var(--hairline);
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 1px rgba(244,241,234,0.25);}
-.brand-word{font-size:14px;letter-spacing:2px;line-height:1.2;}
-.brand-word span{display:block;font-family:'EB Garamond',serif;font-weight:400;letter-spacing:4px;font-size:9px;color:var(--sage);margin-top:2px;text-transform:uppercase;}
-nav{display:flex;gap:28px;font-size:14px;letter-spacing:0.5px;}
-nav a{color:var(--sage);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
-nav a:hover{border-color:var(--sage);}
-.nav-cta{background:var(--red);color:var(--cream);padding:8px 16px;border-radius:100px;font-size:13px;letter-spacing:0.5px;}
-.nav-cta:hover{background:#a8362f;}
-@media (max-width:720px){ nav{display:none;} }
-
-/* hero */
-.hero{
-  position:relative;overflow:hidden;
-  padding:96px 0 80px;
-  background:linear-gradient(180deg, rgba(1,39,52,0.55) 0%, rgba(1,39,52,0.75) 55%, var(--bg) 100%),
-             radial-gradient(ellipse at 75% -10%, rgba(159,199,194,0.10) 0%, rgba(159,199,194,0) 55%),
-             url(assets/caviahue/hero_bg.jpg);
-  background-size:cover;
-  background-position:center 65%;
-}
-.hero svg.contours{position:absolute;inset:0;width:100%;height:100%;opacity:0.35;z-index:0;}
-.hero-inner{position:relative;z-index:1;}
-.eyebrow{font-family:'EB Garamond',serif;letter-spacing:5px;font-size:12px;color:var(--red);text-transform:uppercase;margin-bottom:16px;}
-.hero h1{font-size:clamp(38px,6vw,64px);line-height:1.05;max-width:760px;}
-.hero .subtitle{margin-top:20px;font-style:italic;font-size:21px;color:var(--sage);max-width:520px;font-weight:400;}
-.hero-ctas{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;}
-.btn{display:inline-block;padding:13px 26px;border-radius:100px;font-size:14px;letter-spacing:0.5px;}
-.btn-primary{background:var(--red);color:var(--cream);}
-.btn-primary:hover{background:#a8362f;}
-.btn-ghost{border:1px solid var(--hairline);color:var(--cream);}
-.btn-ghost:hover{border-color:var(--sage);color:var(--sage);}
-
-/* intro */
-.intro{padding:70px 0;border-top:1px dotted var(--hairline);border-bottom:1px dotted var(--hairline);}
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-.intro h2{font-size:28px;margin-bottom:18px;}
-.intro p{color:var(--sage);font-size:17px;}
-@media (max-width:760px){.intro-grid{grid-template-columns:1fr;gap:28px;}}
-
-/* section title */
-.section-title{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
-.section-head{padding-top:80px;}
-.section-head h2{font-size:32px;max-width:600px;}
-.section-head p.lead{margin-top:14px;color:var(--sage);font-style:italic;font-size:18px;max-width:560px;}
-
-/* catalog cards */
-.catalog{padding:32px 0 90px;}
-.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px;}
-@media (max-width:760px){.card-grid{grid-template-columns:1fr;}}
-.card{
-  background:var(--bg-soft);
-  border:1px solid var(--hairline);
-  border-radius:4px;
-  padding:32px;
-  position:relative;
-  transition:border-color .2s, transform .2s;
-}
-.card:hover{border-color:var(--sage-dim);transform:translateY(-2px);}
-.card .tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);border:1px solid var(--hairline);padding:5px 12px;border-radius:100px;margin-bottom:18px;}
-.card h3{font-size:24px;margin-bottom:10px;line-height:1.15;}
-.card .meta{color:var(--sage-dim);font-size:14px;margin-bottom:14px;letter-spacing:0.3px;}
-.card p{font-size:15.5px;color:var(--cream);opacity:0.88;}
-.card .card-footer{margin-top:22px;display:flex;align-items:center;justify-content:space-between;border-top:1px dotted var(--hairline);padding-top:16px;}
-.card .price{font-size:13px;color:var(--sage);letter-spacing:0.3px;}
-.card .arrow{color:var(--red);font-size:14px;}
-.card.featured{border-color:var(--red);}
-.card.featured .tag{border-color:var(--red);color:#e8a89f;}
-
-/* day trip strip */
-.daytrip{
-  margin-top:36px;
-  background:var(--circle);
-  border:1px solid var(--hairline);
-  border-radius:4px;
-  padding:28px 32px;
-  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
-}
-.daytrip .tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);border:1px solid var(--hairline);padding:5px 12px;border-radius:100px;margin-bottom:10px;}
-.daytrip h3{font-size:20px;}
-.daytrip p{color:var(--sage-dim);font-size:14.5px;margin-top:4px;max-width:520px;}
-
-
-/* gallery */
-.gallery{padding:24px 0 90px;}
-.gallery-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;margin-top:44px;height:520px;}
-.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:4px;filter:saturate(1.05);}
-.gallery-grid .g1{grid-row:1 / 3;}
-@media (max-width:760px){
-  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px);height:auto;}
-  .gallery-grid .g1{grid-row:1 / 2;grid-column:1 / 3;}
-}
-.gallery-caption{margin-top:16px;color:var(--sage-dim);font-size:14px;font-style:italic;}
-
-.gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;height:220px;}
-.gallery-strip img{width:100%;height:100%;object-fit:cover;border-radius:4px;}
-@media (max-width:760px){.gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px;height:auto;} .gallery-strip img:nth-child(3){grid-column:1/3;}}
-
-
-/* advisory + tables */
-.advise-block{margin-top:36px;background:linear-gradient(135deg, var(--bg-soft), var(--circle));border:1px solid var(--hairline);border-radius:4px;padding:32px;}
-.advise-block h3{margin-bottom:10px;}
-.advise-block p{color:var(--sage);font-size:15.5px;max-width:560px;margin-bottom:20px;}
-.dates-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px;}
-.dates-table th{text-align:left;color:var(--red);font-family:'Playfair Display',serif;font-weight:500;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 14px;border-bottom:1px solid var(--hairline);}
-.dates-table td{padding:12px 14px;border-bottom:1px dotted var(--hairline);color:var(--cream);}
-.dates-table tr td:first-child{color:var(--sage);font-style:italic;}
-.fauna{padding:70px 0;border-top:1px dotted var(--hairline);}
-
-/* footer */
-footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;}
-.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;}
-.footer-brand{display:flex;align-items:center;gap:12px;}
-.footer-brand img{width:38px;height:38px;border-radius:50%;}
-.footer-links{display:flex;gap:40px;flex-wrap:wrap;}
-.footer-col h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px;font-family:'EB Garamond',serif;font-weight:500;}
-.footer-col a{display:block;color:var(--sage);font-size:14.5px;margin-bottom:8px;}
-.footer-bottom{margin-top:48px;padding-top:20px;border-top:1px dotted var(--hairline);font-size:12.5px;color:var(--sage-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/shared/style.css">
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a class="brand" href="#top">
-      <img src="assets/logo.png" alt="Austral Geoturismo">
+      <img src="assets/shared/logo.png" alt="Austral Geoturismo">
       <div class="brand-word">AUSTRAL<span>Geoturismo</span></div>
     </a>
     <nav>
@@ -227,7 +77,7 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
         <p data-en="A scientific expedition guided by a Dr. in Geology at Argentina's most accessible active volcano. Sampling at the caldera, geysers, native sulfur, and an electronic music track generated from the volcano's sounds.">Expedición científica guiada por un Dr. en Geología en el volcán activo más accesible de Argentina. Muestreo en la caldera, géiseres, azufre nativo y una pieza de música electrónica generada con los sonidos del volcán.</p>
         <div class="card-footer">
           <span class="price" data-en="All-inclusive">Todo incluido</span>
-          <span class="arrow" data-en="Ask us →">Consultar →</span>
+          <a class="arrow" href="copahue-sessions.html" style="color:var(--red);" data-en="Ask us →">Consultar →</a>
         </div>
       </div>
 
@@ -238,7 +88,7 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
         <p data-en="Trekking beside the Copahue volcano, volcanic hot springs, and a valley that reads like an open book of geology: active volcanism, fumaroles and glacial geomorphology.">Trekking junto al volcán Copahue, termas de origen volcánico y un valle que se lee como un libro de geología abierto: vulcanismo activo, fumarolas y geomorfología glaciaria.</p>
         <div class="card-footer">
           <span class="price" data-en="Budget / Premium">Económica / Premium</span>
-          <span class="arrow" data-en="Ask us →">Consultar →</span>
+          <a class="arrow" href="caviahue.html" style="color:var(--red);" data-en="Ask us →">Consultar →</a>
         </div>
       </div>
 
@@ -249,7 +99,7 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
         <p data-en="Batea Mahuida and both faces of the Lanín volcano, among araucaria forests, lava flows and glacial moraines. Rock art, the geomorphology of the Aluminé river, and an optional close at the 7 Lakes.">Batea Mahuida y las dos caras del volcán Lanín, entre araucarias, lavas y morenas glaciarias. Pinturas rupestres, geomorfología del río Aluminé y cierre opcional en los 7 Lagos.</p>
         <div class="card-footer">
           <span class="price" data-en="Budget / Premium">Económica / Premium</span>
-          <span class="arrow" data-en="Ask us →">Consultar →</span>
+          <a class="arrow" href="volcanes-neuquinos.html" style="color:var(--red);" data-en="Ask us →">Consultar →</a>
         </div>
       </div>
 
@@ -260,7 +110,7 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
         <p data-en="Whales at Puerto Pirámides, penguins and elephant seals at Caleta Valdés and Punta Tombo, marine fossils, the Egidio Feruglio Museum and the Welsh landing story in Gaiman." >Ballenas en Puerto Pirámides, pingüinos y elefantes marinos en Caleta Valdés y Punta Tombo, fósiles marinos, el Museo Egidio Feruglio y el desembarco galés en Gaiman.</p>
         <div class="card-footer">
           <span class="price" data-en="3 lodging options">3 versiones de alojamiento</span>
-          <span class="arrow" data-en="Ask us →">Consultar →</span>
+          <a class="arrow" href="valdes.html" style="color:var(--red);" data-en="Ask us →">Consultar →</a>
         </div>
       </div>
 
@@ -273,7 +123,7 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
         <div class="meta">Cerro Avanzado + Punta Ninfas</div>
         <p data-en="Half a day to tell apart sand and gravel beaches, with a short walk and an optional stop at a craft brewery. Ideal if you can't do the full long trip.">Medio día para diferenciar playas de arena y de grava, con una caminata corta y opción de cierre en una cervecería artesanal. Ideal si no hacés la salida larga completa.</p>
       </div>
-      <a class="btn btn-ghost" href="#contacto" data-en="Ask us →">Consultar →</a>
+      <a class="btn btn-ghost" href="cerro-avanzado.html" data-en="Ask us →">Consultar →</a>
     </div>
 
     <div class="advise-block">
@@ -362,8 +212,8 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
 
 <section class="gallery">
   <div class="wrap">
-    <div class="section-title">Caviahue en imágenes</div>
-    <h2 style="font-size:28px;">Volcán, agua y araucarias</h2>
+    <div class="section-title" data-en="CAVIAHUE IN PICTURES">Caviahue en imágenes</div>
+    <h2 style="font-size:28px;" data-en="Volcanoes, fumaroles, acid waters and glaciers">Volcanes, fumarolas, aguas ácidas y glaciares</h2>
     <div class="gallery-grid">
       <img class="g1" src="assets/caviahue/waterfall.jpg" alt="Cascada en la zona de Caviahue-Copahue, aguas turquesas cayendo sobre roca volcánica">
       <img src="assets/caviahue/crater.jpg" alt="Cráter del volcán Copahue con fumarolas activas">
@@ -376,8 +226,8 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
 
 <section class="gallery">
   <div class="wrap">
-    <div class="section-title">Volcanes Neuquinos en imágenes</div>
-    <h2 style="font-size:28px;">El Lanín, sus lagos y el paso entre araucarias</h2>
+    <div class="section-title" data-en="VOLCANES NEUQUINOS IN PICTURES">Volcanes Neuquinos en imágenes</div>
+    <h2 style="font-size:28px;" data-en="Lanín, Batea Mahuida and araucaria forests">Lanín, Batea Mahuida y bosques de araucarias</h2>
     <div class="gallery-grid">
       <img class="g1" src="assets/volcanes/lanin_cone.jpg" alt="Volcán Lanín visto desde una playa de troncos, cono nevado perfecto">
       <img src="assets/volcanes/trekking.jpg" alt="Trekking sobre nieve rumbo al volcán Lanín">
@@ -407,13 +257,28 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
   </div>
 </section>
 
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-title" data-en="MADRYN IN PICTURES">Madryn en imágenes</div>
+    <h2 style="font-size:28px;" data-en="Cerro Avanzado, gravel beaches and coastal lagoons">Cerro Avanzado, playas de grava y lagunas costeras</h2>
+    <div class="gallery-grid">
+      <img class="g1" src="assets/cerro/gravel_beach.jpg" alt="Playa de canto rodado en la zona de Madryn">
+      <img src="assets/cerro/bay_view.jpg" alt="Vista de la bahía costera">
+      <img src="assets/cerro/lagoon_seals.jpg" alt="Laguna costera con lobos marinos">
+      <img src="assets/valdes/isthmus.jpg" alt="Istmo y bahía turquesa cercana" style="grid-column:2/4;">
+    </div>
+    <p class="gallery-caption" data-en="The pebble beaches, coastal lagoons and the walk at Cerro Avanzado, right by Puerto Madryn.">Las playas de grava, las lagunas costeras y la caminata de Cerro Avanzado, a un paso de Puerto Madryn.</p>
+  </div>
+</section>
+
 <section id="nosotros" style="padding:70px 0;border-top:1px dotted var(--hairline);">
-  <div class="wrap" style="display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;max-width:780px;">
-    <img src="assets/caviahue/guide.jpg" alt="Guía de Austral Geoturismo frente al volcán Copahue" style="width:200px;height:200px;object-fit:cover;border-radius:50%;border:1px solid var(--hairline);">
+  <div class="wrap" style="display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;max-width:780px;">
+    <img src="assets/shared/juanma.jpg" alt="Juan Manuel, guía de Austral Geoturismo" style="width:200px;height:200px;object-fit:cover;border-radius:50%;border:1px solid var(--hairline);">
     <div>
       <div class="section-title" data-en="THE GUIDE">Quién guía</div>
       <h2 style="font-size:28px;" data-en="Juan Manuel — Dr. in Geology (UBA)">Juan Manuel — Dr. en Geología (UBA)</h2>
-      <p style="margin-top:16px;color:var(--sage);font-size:17px;" data-en="Researcher and lecturer. My work and research in Patagonia let me travel every corner of it. My passion for teaching and sharing knowledge led me to want to show the true face of these landscapes." >Investigador y docente. Trabajo e investigo en Patagonia, eso me permitió recorrer todos sus rincones. Y mi pasión por la enseñanza y divulgar conocimiento me llevaron a querer mostrar la cara verdadera de los paisajes.</p>
+      <p style="margin-top:16px;color:var(--sage);font-size:17px;" data-en="I did my doctorate studying the Copahue volcano, and today I research the Patagonian coast — same passion, different landscape. I'm a naturalist above all, and in my free time I make trance music: electronic tracks built from field sounds, something you'll find woven into some of the tours. I've been advising travelers on Patagonia for 4 years, and taking friends and family exploring for a lot longer — now I just finally do it for real.">Hice mi doctorado estudiando el volcán Copahue y hoy investigo la costa patagónica — la misma pasión, otro paisaje. Soy naturalista antes que nada, y en mis ratos libres hago trance: música electrónica hecha con los sonidos del campo, algo que vas a ver metido en algunas de las salidas. Llevo 4 años asesorando gente que quiere viajar por Patagonia, y mucho más tiempo llevando amigos y familia a recorrerla — ahora simplemente lo hago posta.</p>
+      <p style="margin-top:14px;color:var(--sage);font-size:17px;" data-en="Patagonia is my place in the world. Its beauty, its climate and its warmth set it apart. I've spent more than 25 years exploring it, as a tourist and as a professional. I promise that after traveling with me, you'll never look at Patagonia — or any landscape — the same way again. Landscapes change when we understand them. And they get better.">Patagonia es mi lugar en el mundo. Su belleza, su clima y su amabilidad la distinguen. Llevo más de 25 años recorriéndola, como turista y como profesional. Te prometo que después de viajar conmigo, jamás volverás a ver Patagonia —ni ningún otro paisaje— como antes. Los paisajes cambian cuando los entendemos. Y se ponen mejores.</p>
       <p style="margin-top:10px;color:var(--cream);font-size:18px;font-style:italic;font-family:'Playfair Display',serif;" data-en="Will you join the adventure?">¿Te sumás a la aventura?</p>
     </div>
   </div>
@@ -423,7 +288,7 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo.png" alt="Austral Geoturismo">
+        <img src="assets/shared/logo.png" alt="Austral Geoturismo">
         <div class="brand-word">AUSTRAL<span>Geoturismo</span></div>
       </div>
       <div class="footer-links">
@@ -434,18 +299,19 @@ footer{border-top:1px solid var(--hairline);padding:56px 0 40px;margin-top:40px;
         </div>
         <div class="footer-col">
           <h4 data-en="Tours">Salidas</h4>
-          <a href="#salidas">Copahue Sessions</a>
-          <a href="#salidas">Caviahue</a>
-          <a href="#salidas">Volcanes Neuquinos</a>
-          <a href="#salidas">Península Valdés</a>
+          <a href="copahue-sessions.html">Copahue Sessions</a>
+          <a href="caviahue.html">Caviahue</a>
+          <a href="volcanes-neuquinos.html">Volcanes Neuquinos</a>
+          <a href="valdes.html">Península Valdés</a>
+          <a href="cerro-avanzado.html">Los mares antiguos de Madryn</a>
         </div>
         <div class="footer-col">
           <h4 data-en="Follow us">Seguinos</h4>
           <div style="display:flex;gap:14px;margin-top:4px;">
-            <a href="https://wa.me/5491150518784" target="_blank" aria-label="WhatsApp" style="font-size:20px;"><i class="ti ti-brand-whatsapp"></i></a>
-            <a href="https://instagram.com/austral.geoturismo" target="_blank" aria-label="Instagram" style="font-size:20px;"><i class="ti ti-brand-instagram"></i></a>
-            <a href="https://tiktok.com/@austral.geoturism" target="_blank" aria-label="TikTok" style="font-size:20px;"><i class="ti ti-brand-tiktok"></i></a>
-            <a href="https://linktr.ee/australgeoturismo" target="_blank" aria-label="Linktree" style="font-size:20px;"><i class="ti ti-link"></i></a>
+            <a href="https://wa.me/5491150518784" target="_blank" aria-label="WhatsApp" style="font-size:20px;"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com/austral.geoturismo" target="_blank" aria-label="Instagram" style="font-size:20px;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://tiktok.com/@austral.geoturism" target="_blank" aria-label="TikTok" style="font-size:20px;"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://linktr.ee/australgeoturismo" target="_blank" aria-label="Linktree" style="font-size:20px;"><i class="fa-solid fa-link"></i></a>
           </div>
         </div>
       </div>
